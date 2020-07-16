@@ -1,18 +1,16 @@
+//
 const express = require('express')
 
 const router = express.Router()
 
-const koders = require('../usecases/koders')
-
-//un router es un conjunto o subconjuntos de rutas
-//funciona básicamente como lo hace app
+const mentors = require('../usecases/mentors')
 
 router.get('/', async (request, response) => {
   try {
-    const allKoders = await koders.getAll()
+    const allmentors = await mentors.getAll()
     response.json({
       success: true,
-      data: allKoders,
+      data: allmentors,
     })
   } catch (error) {
     response.status(400)
@@ -25,13 +23,13 @@ router.get('/', async (request, response) => {
 
 router.post('/', async (request, response) => {
   try {
-    const newKodersData = request.body
+    const newmentorsData = request.body
 
-    const newKoder = await koders.create(newKodersData)
+    const newMentor = await mentors.create(newmentorsData)
 
     response.json({
       success: true,
-      data: newKoder,
+      data: newMentor,
     })
   } catch (error) {
     response.status(400)
@@ -45,11 +43,11 @@ router.post('/', async (request, response) => {
 router.delete('/:id', async (request, response) => {
   try {
     const id = request.params.id
-    await koders.deleteById(id)
+    await mentors.deleteById(id)
 
     response.json({
       success: true,
-      message: 'Koder removed',
+      message: 'Mentor removed',
     })
   } catch (error) {
     response.status(400)
@@ -64,11 +62,11 @@ router.patch('/:id', async (request, response) => {
   try {
     const id = request.params.id
     const newData = request.body
-    await koders.updateById(id, newData)
+    await mentors.updateById(id, newData)
 
     response.json({
       success: true,
-      message: 'Updated Koder',
+      message: 'Updated Mentor',
     })
   } catch (error) {
     response.status(400)

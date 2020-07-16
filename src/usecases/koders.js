@@ -10,17 +10,17 @@ function create(koderData) {
   return Koders.create(koderData)
 }
 
-function deleteKoder(idKoder) {
+function deleteById(idKoder) {
   return Koders.findByIdAndDelete(idKoder)
 }
 
-function update(idKoder, newData) {
+function updateById(idKoder, newData) {
   return Koders.findByIdAndUpdate(idKoder, newData)
 }
 
 module.exports = {
   getAll,
   create,
-  deleteKoder,
-  update,
+  deleteById,
+  updateById,
 }
