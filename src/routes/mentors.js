@@ -8,6 +8,7 @@ const mentors = require('../usecases/mentors')
 router.get('/', async (request, response) => {
   try {
     const allmentors = await mentors.getAll()
+
     response.json({
       success: true,
       data: allmentors,
@@ -24,7 +25,6 @@ router.get('/', async (request, response) => {
 router.post('/', async (request, response) => {
   try {
     const newmentorsData = request.body
-
     const newMentor = await mentors.create(newmentorsData)
 
     response.json({
