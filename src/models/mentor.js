@@ -22,7 +22,7 @@ const mentorSchema = new mongoose.Schema({
   mail: {
     type: String,
     required: true,
-    maxlength: 100,
+    maxlength: 80,
   },
 })
 
