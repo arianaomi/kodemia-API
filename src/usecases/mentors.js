@@ -1,7 +1,6 @@
 //
 const Mentors = require('../models/mentor')
 
-
 function getAll() {
   return Mentors.find()
 }
