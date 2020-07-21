@@ -3,25 +3,43 @@ const express = require('express')
 const router = express.Router()
 
 const koders = require('../usecases/koders')
-
-//un router es un conjunto o subconjuntos de rutas
-//funciona básicamente como lo hace app
-
-router.get('/', async (request, response) => {
-  try {
-    const allKoders = await koders.getAll()
-    response.json({
-      success: true,
-      data: allKoders,
-    })
-  } catch (error) {
-    response.status(400)
-    response.json({
-      success: false,
-      error: error.message,
-    })
+const app = require('../server')
+//middleware nivel router
+router.use(
+  (request, response, next) => {
+    console.log('middleware router koders: ', request.naomi)
+    next()
+  },
+  (request, response, next) => {
+    console.log('-----------')
+    next()
   }
-})
+)
+
+// router es un conjunto o subconjuntos de rutas, funciona básicamente como lo hace app
+
+router.get(
+  '/',
+  (response, require, next) => {
+    console.log('middleware de endpoint GET koder')
+    next()
+  },
+  async (request, response) => {
+    try {
+      const allKoders = await koders.getAll()
+      response.json({
+        success: true,
+        data: allKoders,
+      })
+    } catch (error) {
+      response.status(400)
+      response.json({
+        success: false,
+        error: error.message,
+      })
+    }
+  }
+)
 
 router.post('/', async (request, response) => {
   try {

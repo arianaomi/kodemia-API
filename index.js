@@ -1,4 +1,4 @@
-// Este archivo deberia poner la aplicación en marcha
+//* Este archivo poner la aplicación en marcha
 require('dotenv').config()
 
 const dbConnect = require('./src/lib/db')

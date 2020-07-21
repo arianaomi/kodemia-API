@@ -4,9 +4,9 @@ const mongoose = require('mongoose')
 const koderSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: true,
     maxlength: 100,
     minlength: 2,
+    unique: true,
   },
   age: {
     type: Number,
@@ -17,7 +17,17 @@ const koderSchema = new mongoose.Schema({
   gender: {
     type: String,
     required: true,
-    enum: ['male', 'famale', 'nonbinnary'],
+    enum: ['male', 'famale', 'nonbinary'],
+  },
+  email: {
+    type: String,
+    required: true,
+    match: /^.+@.+\..+$/ /*regex:  . match con cualquier caracter ,{} modificador de frecuencia, + de uno en adelante */,
+  },
+  password: {
+    type: String,
+    required: true,
+    min: 1,
   },
 })
 
