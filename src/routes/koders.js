@@ -6,18 +6,7 @@ const koders = require('../usecases/koders')
 const auth = require('../middlewares/auth')
 const koder = require('../models/koder')
 
-//middleware nivel router
-/* router.use(
-  (request, response, next) => {
-    console.log('middleware router koders: ', request.naomi)
-    next()
-  },
-  (request, response, next) => {
-    console.log('-----------')
-    next()
-  }
-) */
-
+//* MIDDLEWARE A NIVEL DE ROUTER
 // router es un conjunto o subconjuntos de rutas, funciona básicamente como lo hace app
 
 router.get(
@@ -42,12 +31,10 @@ router.get(
     }
   }
 )
-// ! path, middleware, handler
+// * path, middleware, handler
 router.post('/', auth, async (request, response) => {
   try {
-    // console.log('koders', request.koder)
     const newKodersData = request.body
-
     const newKoder = await koders.create(newKodersData)
 
     response.json({

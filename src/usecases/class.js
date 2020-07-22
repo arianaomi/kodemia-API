@@ -16,3 +16,10 @@ function deleteById(idClass) {
 function updateById(idClass, newData) {
   return Class.findByIdAndUpdate(idClass, newData)
 }
+
+module.exports = {
+  getAll,
+  create,
+  deleteById,
+  updateById,
+}

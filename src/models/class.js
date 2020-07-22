@@ -8,10 +8,7 @@ const classSchema = new mongoose.Schema({
     uppercase: true,
   },
   date: {
-    type: {
-      type: Date,
-      required: true,
-    },
+    type: Date,
   },
   description: {
     type: String,
