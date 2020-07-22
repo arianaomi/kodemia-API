@@ -22,10 +22,10 @@ function updateById(idKoder, newData) {
 
 async function singup(koderData) {
   const { password, email } = koderData
-  const koderByEmail = await Koders.findOne({ email })
+  const koderByEmail = await Koders.findOne({ email }) 
 
   if (koderByEmail) {
-    throw new Error('Email exists')
+    throw new Error('Email exists') // ! Se ejecita si ya existe el correo 
   }
   // * usamos await para no usar la promesa sino lo que regresa la promesa
   const passwordEncripted = await bcrypt.hash(password)

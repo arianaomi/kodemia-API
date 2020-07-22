@@ -6,7 +6,6 @@ const koderSchema = new mongoose.Schema({
     type: String,
     maxlength: 100,
     minlength: 2,
-    unique: true,
   },
   age: {
     type: Number,
