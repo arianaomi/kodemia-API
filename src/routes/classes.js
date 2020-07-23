@@ -2,6 +2,7 @@
 const express = require('express')
 const router = express.Router()
 const classes = require('../usecases/class')
+const { getAssosiatedMentors } = require('../usecases/class')
 
 router.get('/', async (request, response) => {
   try {
@@ -61,6 +62,25 @@ router.patch('/:id', async (request, response) => {
     response.json({
       success: true,
       message: 'Updated Class',
+    })
+  } catch (error) {
+    response.status(400)
+    response.json({
+      success: false,
+      error: error.message,
+    })
+  }
+})
+
+router.get('/:title', async (request, response) => {
+  try {
+    const title = request.params.title.toUpperCase()
+    //console.log(title)
+    await classes.getAssosiatedMentors(title)
+
+    response.json({
+      success: true,
+      message: 'Data of mentors',
     })
   } catch (error) {
     response.status(400)

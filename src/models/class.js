@@ -8,7 +8,7 @@ const classSchema = new mongoose.Schema({
     uppercase: true,
   },
   date: {
-    type: Date,
+    type: Date, // ! "2020-07-22T05:00:00.000+00:00"
   },
   description: {
     type: String,
